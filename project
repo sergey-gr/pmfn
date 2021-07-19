@@ -1,0 +1,22 @@
+#!/bin/sh
+
+scriptname="$(basename "$0")"
+scriptdir="$(cd `dirname "$0"` && pwd)"
+python='python3'
+
+# ANSI escape codes
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+if [ "$1" == "create" ]; then
+    $python $scriptdir/bin/create.py $2
+
+elif [ "$1" == "delete" ];then
+    $python $scriptdir/bin/delete.py $2
+
+elif [ "$1" == "list" ]; then
+    $python $scriptdir/bin/list.py $2
+
+else
+    echo "${YELLOW}Usage: $scriptname create|delete|list <project_name>${NC}"
+fi
